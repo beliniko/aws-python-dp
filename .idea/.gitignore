@@ -6,3 +6,43 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+
+# Virtual environment folders
+venv/
+env/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Pipenv and poetry related files
+Pipfile.lock
+poetry.lock
+
+# MyPy, Pyright, and other type checker caches
+.mypy_cache/
+.pyright/
+
+# Test and coverage results
+.coverage
+htmlcov/
+.cache/
+
+# Local environment settings
+.env
+*.env
