@@ -1,0 +1,10 @@
+// create PostgreSQL table:
+CREATE TABLE iot_clients (
+    device_id TEXT,
+    timestamp TIMESTAMPTZ,
+    temperature REAL,
+    battery_status INT,
+    latitude REAL,
+    longitude REAL,
+    connection_status TEXT
+);
