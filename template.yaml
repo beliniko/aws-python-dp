@@ -13,16 +13,16 @@ Resources:
       MemorySize: 128
       VpcConfig:
         SecurityGroupIds:
-          - sg-009c10e996aee0a3c
+          - sg-<your_security_group_id>
         SubnetIds:
-          - subnet-0973b06e56d945c8b
-          - subnet-07b784f38804ed5e4
+          - subnet-<your_subnet_id_1>
+          - subnet-<your_subnet_id_2>
       Environment:
         Variables:
-          DB_HOST: postgres-instance-1.cps0eg466pdz.eu-central-1.rds.amazonaws.com
-          DB_NAME: postgres
-          DB_USER: postgres
-          DB_PASSWORD: EcdS~5>SnBLe-H57NoZ!(J2.M~]K
+          DB_HOST: <your_db_host>
+          DB_NAME: <your_db_name>
+          DB_USER:  <your_db_user>
+          DB_PASSWORD: <your_db_password>
       Policies:
         - AWSLambdaVPCAccessExecutionRole
         - Statement:
