@@ -21,14 +21,14 @@ def get_db_connection():
         raise
 
 def lambda_handler(event, context):
-    # Anzahl Clients aus dem Event (z. B. {"client_count": 50})
+    # Number of  Clients in the event (z. B. {"client_count": 50})
     client_count = int(event.get('client_count', 10))
 
     try:
         conn = get_db_connection()
         cur = conn.cursor()
 
-        start_time = time.time()  # 🔹 Startzeit für Latenzmessung
+        start_time = time.time()
 
         for client_id in range(1, client_count + 1):
             device_id = f'client_{client_id}'
@@ -53,7 +53,7 @@ def lambda_handler(event, context):
         cur.close()
         conn.close()
 
-        end_time = time.time()  # 🔹 Endzeit für Latenzmessung
+        end_time = time.time()
         latency_ms = (end_time - start_time) * 1000
 
         print(f"✅ {client_count} clients inserted in {latency_ms:.2f} ms.")
