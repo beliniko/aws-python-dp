@@ -105,6 +105,6 @@ def simulate_load(device_count):
 
 if __name__ == "__main__":
     start_time = time.time()
-    simulate_load(10)
+    simulate_load(200)
     end_time = time.time()
     print(f"🕒 Simulation completed in {end_time - start_time:.2f} seconds.")

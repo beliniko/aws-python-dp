@@ -11,10 +11,10 @@ total_latency = 0  # Variable to track total latency
 device_count_processed = 0  # Variable to track the number of devices processed
 
 # Initialize connection pool
-db_host = 'postgres.cps0eg466pdz.eu-central-1.rds.amazonaws.com'
-db_name = 'postgres'
-db_user = 'postgres'
-db_password = 'xxx'
+db_host = '<my-db-host>'
+db_name = '<my-db-name>'
+db_user = '<my-db-user>'
+db_password = '<my-db-password>'
 
 connection_pool = SimpleConnectionPool(
     minconn=1,
@@ -110,7 +110,7 @@ def simulate_load(device_count):
 if __name__ == "__main__":
     try:
         start_time = time.time()
-        simulate_load(81)
+        simulate_load(200)
         end_time = time.time()
         print(f"🕒 Simulation completed in {end_time - start_time:.2f} seconds.")
     finally:

@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  WriteToAuroraFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: writeToAurora
+      Handler: lambda/write_to_go.lambda_handler
+      Runtime: python3.11
+      CodeUri: src/
+      Timeout: 10
+      MemorySize: 128
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-009c10e996aee0a3c
+        SubnetIds:
+          - subnet-0973b06e56d945c8b
+          - subnet-07b784f38804ed5e4
+      Environment:
+        Variables:
+          DB_HOST: postgres-instance-1.cps0eg466pdz.eu-central-1.rds.amazonaws.com
+          DB_NAME: postgres
+          DB_USER: postgres
+          DB_PASSWORD: EcdS~5>SnBLe-H57NoZ!(J2.M~]K
+      Policies:
+        - AWSLambdaVPCAccessExecutionRole
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource: "*"
+
+  InsertClientsDynamoDB:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: InsertClientsDynamoDB
+      Handler: lambda/insert_client_lambdaDyB.lambda_handler
+      Runtime: python3.11
+      CodeUri: src/
+      Timeout: 15
+      MemorySize: 128
+      Environment:
+        Variables:
+          TABLE_NAME: <your_table_name>
+      Policies:
+        - AmazonDynamoDBFullAccess
+
+  InsertClientsPostgres:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: insertClientsPostgres
+      Handler: lambda/add_clients_postgres_lambda.lambda_handler
+      Runtime: python3.11
+      CodeUri: src/
+      Timeout: 15
+      MemorySize: 128
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-<your_security_group_id>
+        SubnetIds:
+          - subnet-<your_subnet_id_1>
+          - subnet-<your_subnet_id_2>
+      Environment:
+        Variables:
+          DB_HOST: <db_host>
+          DB_NAME: <db_name>
+          DB_USER: <user>
+          DB_PASSWORD: <password>
+      Policies:
+        - AWSLambdaVPCAccessExecutionRole
+    Metadata:
+      BuildMethod: python3.11
+
